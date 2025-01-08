@@ -295,17 +295,17 @@ export default function NudesPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      <main className="md:ml-64 pt-24 px-4 md:px-8 py-6">
+      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
         {/* Categories */}
-        <div className="mb-6 flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="mt-8 lg:mt-12 mb-8 lg:mb-12 flex gap-3 lg:gap-4 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category.toLowerCase())}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap
+              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap transition-all duration-300
                 ${selectedCategory === category.toLowerCase()
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-red-600/20'}`}
+                  ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20'
+                  : 'bg-gray-900/50 text-gray-300 hover:bg-pink-500/10 border border-pink-500/10'}`}
             >
               {category}
             </button>
@@ -316,13 +316,18 @@ export default function NudesPage() {
         <AdBanner />
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="mt-8 lg:mt-16 grid grid-cols-1 gap-8">
           {loading ? (
-            <div className="col-span-12 text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto"></div>
             </div>
           ) : (
-            <ImageGallery images={images} selectedCategory={selectedCategory} />
+            <div className="w-full">
+              <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
+                <h2 className="text-xl lg:text-2xl font-bold mb-6 text-pink-400">MeliaX Nudes</h2>
+                <ImageGallery images={images} selectedCategory={selectedCategory} />
+              </div>
+            </div>
           )}
         </div>
       </main>

@@ -38,10 +38,10 @@ export default function StripchatPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      <main className="md:ml-64 pt-24 px-4 md:px-8 py-6">
-        <div className="max-w-4xl mx-auto">
+      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
+        <div className="mt-8 lg:mt-16">
           {/* Stream Window */}
-          <div className="bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden border border-[#E72C4B]/20 mb-6">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl lg:rounded-2xl overflow-hidden border border-[#E72C4B]/20 mb-8">
             <div className="aspect-video bg-black relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-gray-500 text-lg">Stream wird geladen...</p>
@@ -49,12 +49,12 @@ export default function StripchatPage() {
             </div>
 
             {/* Stream Info Bar */}
-            <div className="p-4 border-t border-[#E72C4B]/20">
+            <div className="p-4 lg:p-6 border-t border-[#E72C4B]/20">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#E72C4B]/20"></div>
                   <div>
-                    <h1 className="font-bold">MeliaX</h1>
+                    <h1 className="text-xl lg:text-2xl font-bold">MeliaX</h1>
                     <p className="text-[#E72C4B] text-sm">Live Now</p>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ export default function StripchatPage() {
                   href="https://stripchat.com/meliax" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-[#E72C4B] text-white rounded-full hover:bg-[#D41E3C] transition-colors shadow-lg shadow-[#E72C4B]/20"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#E72C4B] text-white rounded-full hover:bg-[#D41E3C] transition-colors shadow-lg shadow-[#E72C4B]/20"
                 >
                   <Heart size={20} />
                   <span className="font-semibold">Watch Live on Stripchat</span>
@@ -74,19 +74,19 @@ export default function StripchatPage() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {streamStats.map((stat, index) => (
-              <div key={index} className="bg-black/40 backdrop-blur-sm rounded-lg p-4 text-center border border-[#E72C4B]/20">
-                <div className="text-2xl font-bold text-[#E72C4B]">{stat.value}</div>
+              <div key={index} className="bg-black/40 backdrop-blur-sm rounded-xl p-4 text-center border border-[#E72C4B]/20">
+                <div className="text-xl lg:text-2xl font-bold text-[#E72C4B]">{stat.value}</div>
                 <div className="text-sm text-gray-300">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             {/* Chat Rules */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-[#E72C4B]/20">
+            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#E72C4B]/20">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-[#E72C4B]">
                 <MessageCircle size={20} />
                 Chat Rules
@@ -100,7 +100,7 @@ export default function StripchatPage() {
             </div>
 
             {/* Tip Menu */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-[#E72C4B]/20">
+            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#E72C4B]/20">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-[#E72C4B]">
                 <DollarSign size={20} />
                 Tip Menu
@@ -123,7 +123,7 @@ export default function StripchatPage() {
           </div>
 
           {/* Room Goals */}
-          <div className="mt-6 bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-[#E72C4B]/20">
+          <div className="mt-8 bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#E72C4B]/20">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-[#E72C4B]">
               <Gift size={20} />
               Room Goals

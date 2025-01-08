@@ -2,31 +2,31 @@ import '../styles/globals.css';
 import FontProvider from '../components/FontProvider';
 import AgeVerificationPreloader from '../components/AgeVerificationPreloader';
 import Head from 'next/head';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <FontProvider>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "MeliaX",
-              "url": "https://meliax-porn.de",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://meliax-porn.de/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
-          }}
+    <div className="min-h-screen bg-black">
+      <Navbar 
+        isMobileMenuOpen={isMobileMenuOpen} 
+        setIsMobileMenuOpen={setIsMobileMenuOpen} 
+      />
+      <div className="flex">
+        <Sidebar 
+          isMobileMenuOpen={isMobileMenuOpen} 
+          setIsMobileMenuOpen={setIsMobileMenuOpen} 
         />
-      </Head>
-      <AgeVerificationPreloader />
-      <Component {...pageProps} />
-    </FontProvider>
+        <main className="flex-1 md:ml-80 pt-16">
+          <Component {...pageProps} />
+        </main>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

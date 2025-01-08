@@ -38,21 +38,21 @@ export default function OnlyFansPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      <main className="md:ml-64 pt-24 px-4 md:px-8 py-6">
-        <div className="max-w-4xl mx-auto">
+      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
+        <div className="mt-8 lg:mt-16">
           {/* Profile Header */}
-          <div className="bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden border border-[#00AFF0]/20">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl lg:rounded-2xl overflow-hidden border border-[#00AFF0]/20">
             {/* Banner Image */}
-            <div className="h-48 bg-gradient-to-r from-[#00AFF0] to-[#0095CC]"></div>
+            <div className="h-32 lg:h-48 bg-gradient-to-r from-[#00AFF0] to-[#0095CC]"></div>
             
             {/* Profile Info */}
-            <div className="p-6">
-              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+            <div className="p-4 lg:p-8">
+              <div className="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
                 {/* Profile Image */}
-                <div className="w-32 h-32 rounded-full bg-[#00AFF0]/20 -mt-16 border-4 border-black/40"></div>
+                <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#00AFF0]/20 -mt-16 border-4 border-black/40"></div>
                 
-                <div className="flex-1 text-center md:text-left">
-                  <h1 className="text-2xl font-bold mb-2">MeliaX Official</h1>
+                <div className="flex-1 text-center lg:text-left">
+                  <h1 className="text-xl lg:text-2xl font-bold mb-2">MeliaX Official</h1>
                   <p className="text-[#00AFF0] mb-4">@meliax • Content Creator</p>
                   
                   {/* OnlyFans Button */}
@@ -72,17 +72,17 @@ export default function OnlyFansPage() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 my-8">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-black/40 backdrop-blur-sm rounded-lg p-4 text-center border border-[#00AFF0]/20">
-                <div className="text-2xl font-bold text-[#00AFF0]">{stat.value}</div>
+              <div key={index} className="bg-black/40 backdrop-blur-sm rounded-xl p-4 text-center border border-[#00AFF0]/20">
+                <div className="text-xl lg:text-2xl font-bold text-[#00AFF0]">{stat.value}</div>
                 <div className="text-sm text-gray-300">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-wrap gap-3 mb-8">
             {[
               { icon: <Instagram size={20} />, label: 'Instagram', href: '#' },
               { icon: <Twitter size={20} />, label: 'Twitter', href: '#' },
@@ -92,7 +92,7 @@ export default function OnlyFansPage() {
               <a
                 key={index}
                 href={link.href}
-                className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-sm rounded-full hover:bg-[#00AFF0]/20 text-sm border border-[#00AFF0]/20"
+                className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-sm rounded-full hover:bg-[#00AFF0]/20 text-sm border border-[#00AFF0]/20 transition-all duration-300"
               >
                 {link.icon}
                 <span>{link.label}</span>
@@ -101,13 +101,13 @@ export default function OnlyFansPage() {
           </div>
 
           {/* Content Preview */}
-          <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-[#00AFF0]/20">
-            <h2 className="text-xl font-bold mb-4">Exclusive Content</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {[...Array(6)].map((_, index) => (
-                <div key={index} className="aspect-square bg-[#00AFF0]/10 rounded-lg relative overflow-hidden border border-[#00AFF0]/20">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#00AFF0]/20">
+            <h2 className="text-xl lg:text-2xl font-bold mb-6">Exclusive Content</h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {[...Array(8)].map((_, index) => (
+                <div key={index} className="aspect-square bg-[#00AFF0]/10 rounded-xl relative overflow-hidden border border-[#00AFF0]/20 group">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Heart className="text-[#00AFF0]/40" size={24} />
+                    <Heart className="text-[#00AFF0]/40 w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-110 transition-transform" />
                   </div>
                 </div>
               ))}

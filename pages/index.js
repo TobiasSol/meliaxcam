@@ -1,224 +1,117 @@
 import { useState, useEffect } from "react";
 import Head from 'next/head';
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import VideoGrid from "../components/VideoGrid";
 import AdBanner from "../components/AdBanner";
+import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const categories = [
     'All', 'Latest', 'Popular', 'Custom', 'Exclusive', 'Premium'
   ];
 
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchVideos();
-  }, []);
-  
-  const fetchVideos = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch('/api/admin/videos', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
-        }
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setVideos(data);
-      } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error fetching videos:', error);
-      setError('Fehler beim Laden der Videos');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
       <Head>
-        <title>MeliaX Porn - Exklusive Pornos & Premium XXX Videos | Offizielle Seite</title>
-        <meta name="description" content="Genieße MeliaX Porn mit den heißesten Pornos und XXX Videos. Täglich neue exklusive Inhalte, Premium Adult Content und private Shows. Jetzt kostenlos ansehen!" />
-        <meta name="keywords" content="meliax porn, meliax pornos, meliax xxx, meliax adult videos, meliax premium porn, meliax exklusive pornos" />
-        <meta property="og:title" content="MeliaX Porn - Exklusive Pornos & Premium XXX Videos" />
-        <meta property="og:description" content="Entdecke MeliaX Porn mit exklusiven Pornos und XXX Videos. Die heißesten Adult Videos und Premium Content." />
+        <title>MeliaX Cam - Exklusive Live Cams & Private Shows | Offizielle Seite</title>
+        <meta name="description" content="Erlebe MeliaX Cam mit heißen Live Shows und privaten Cam Sessions. Tägliche Live Streams, private Chats und exklusive Cam Shows. Jetzt kostenlos zusehen!" />
+        <meta name="keywords" content="meliax cam, meliax live cam, meliax private shows, meliax camgirl, meliax live streams, meliax private chat" />
+        <meta property="og:title" content="MeliaX Cam - Exklusive Live Cams & Private Shows" />
+        <meta property="og:description" content="Entdecke MeliaX Cam mit exklusiven Live Shows und privaten Cam Sessions. Die heißesten Live Streams und Private Shows." />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="MeliaX Porn Official" />
+        <meta property="og:site_name" content="MeliaX Cam Official" />
         <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://meliax-porn.de" />
+        <link rel="canonical" href="https://meliax-cam.de" />
       </Head>
-
-      <Navbar 
-        isMobileMenuOpen={isMobileMenuOpen} 
-        setIsMobileMenuOpen={setIsMobileMenuOpen} 
-      />
-      <Sidebar 
-        isMobileMenuOpen={isMobileMenuOpen} 
-        setIsMobileMenuOpen={setIsMobileMenuOpen} 
-      />
       
-      <main className="md:ml-64 pt-24 px-4 md:px-8 py-6">
-        {/* Categories */}
-        <div className="mb-6 flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
+        {/* Categories - verbesserte mobile Darstellung */}
+        <div className="mt-8 lg:mt-12 mb-8 lg:mb-12 flex gap-3 lg:gap-4 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category.toLowerCase())}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap
+              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap transition-all duration-300
                 ${selectedCategory === category.toLowerCase()
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-red-600/20'}`}
+                  ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20'
+                  : 'bg-gray-900/50 text-gray-300 hover:bg-pink-500/10 border border-pink-500/10'}`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        {/* Ad Banner */}
         <AdBanner />
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Videos */}
-          <div className="col-span-12">
-            {loading ? (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+        {/* Live Cam Card - responsive Anpassungen */}
+        <div className="mt-8 lg:mt-16">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl lg:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+            <div className="relative bg-gray-900/50 rounded-xl lg:rounded-2xl border border-pink-500/10 backdrop-blur-sm overflow-hidden">
+              <div className="aspect-video relative flex items-center justify-center bg-gradient-to-br from-pink-500/5 to-purple-500/5">
+                <div className="text-center">
+                  <p className="text-pink-400 font-medium uppercase tracking-wider mb-2 lg:mb-3 text-xl lg:text-3xl">
+                    Bald Online
+                  </p>
+                  <span className="w-3 h-3 lg:w-4 lg:h-4 bg-pink-500 rounded-full inline-block animate-pulse"></span>
+                </div>
               </div>
-            ) : (
-              <VideoGrid videos={videos} />
-            )}
+
+              <div className="p-4 lg:p-8">
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">MeliaX Cam Privat Show</h3>
+                <p className="text-pink-300 text-base lg:text-lg mb-4 lg:mb-6">Live aus Berlin, DE</p>
+                
+                <div className="flex flex-wrap gap-2 lg:gap-3 mb-4 lg:mb-6">
+                  {['HD', '4K', 'Premium', 'Deutsch'].map((tag) => (
+                    <span key={tag} className="bg-pink-500/10 text-pink-300 px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg lg:rounded-xl text-xs lg:text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-2.5 lg:py-3 rounded-xl hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 group">
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase text-sm lg:text-lg tracking-wider">
+                    Zum Stream
+                    <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* SEO Artikel */}
-        <article className="mt-12 prose prose-invert max-w-none">
-          <h1 className="text-3xl font-bold mb-6">MeliaX: Aufstrebender Star der deutschen Adult-Entertainment-Szene</h1>
+        {/* SEO Article - responsive Typography */}
+        <article className="mt-8 lg:mt-16 prose prose-invert max-w-none">
+          <h1 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
+            MeliaX: Deine exklusive Live Cam Experience
+          </h1>
           
           <p className="mb-4">
-            MeliaX hat sich in der deutschen Adult-Entertainment-Branche als eine der faszinierendsten Newcomerinnen etabliert. 
-            Die charismatische Content-Creatorin begeistert ihr Publikum durch authentische Performances und hochwertige Produktionen.
+            Tauche ein in die Welt von MeliaX Cam, wo authentische Live-Unterhaltung auf höchstem Niveau geboten wird. 
+            Als eine der gefragtesten Cam-Performerinnen Deutschlands bietet MeliaX ihren Zuschauern ein einzigartiges 
+            und interaktives Live-Erlebnis.
           </p>
 
-          <h2 className="text-2xl font-bold mt-8 mb-4">Vielfältiges Content-Portfolio</h2>
-          <p className="mb-4">Die Künstlerin bietet ihren Fans verschiedene Möglichkeiten, exklusive Inhalte zu genießen:</p>
+          <h2 className="text-2xl font-bold mt-8 mb-4">Live Cam Features</h2>
           <ul className="list-disc pl-6 mb-6">
-            <li>Premium Videos: Professionell produzierte Filme in höchster Qualität</li>
-            <li>Live-Streaming: Regelmäßige Cam-Shows mit persönlicher Interaktion</li>
-            <li>Exklusive Fotogalerien: Künstlerische und erotische Fotoserien</li>
-            <li>Private Snapchat: Einblicke in den Alltag der Künstlerin</li>
+            <li>HD & 4K Streaming Qualität</li>
+            <li>Interaktive Live Shows</li>
+            <li>Private Cam Sessions</li>
+            <li>Chat & Voice Interaktion</li>
           </ul>
 
-          <h2 className="text-2xl font-bold mt-8 mb-4">Erfolg auf verschiedenen Plattformen</h2>
-          <p className="mb-4">MeliaX ist auf allen relevanten Adult-Plattformen vertreten:</p>
+          <h2 className="text-2xl font-bold mt-8 mb-4">Stream Highlights</h2>
           <ul className="list-disc pl-6 mb-6">
-            <li>OnlyFans (Premium-Content)</li>
-            <li>Stripchat (Live-Performances)</li>
-            <li>Instagram (SFW-Content)</li>
-            <li>Twitter (Updates und Ankündigungen)</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">Auszeichnungen und Erfolge</h2>
-          <p className="mb-4">Die steigende Popularität von MeliaX spiegelt sich in verschiedenen Erfolgen wider:</p>
-          <ul className="list-disc pl-6 mb-6">
-            <li>Top 1% der Creator auf OnlyFans</li>
-            <li>Mehrfache Auszeichnung als "Cam Model des Monats"</li>
-            <li>Wachsende internationale Fanbase</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">Persönlicher Touch</h2>
-          <p className="mb-6">
-            Was MeliaX besonders auszeichnet, ist ihre authentische Art und der direkte Kontakt zu ihren Fans. 
-            Regelmäßige Meet & Greets und persönliche Nachrichten schaffen eine einzigartige Bindung zur Community.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">Zukunftspläne</h2>
-          <p className="mb-4">Für die Zukunft plant MeliaX:</p>
-          <ul className="list-disc pl-6 mb-6">
-            <li>Eigene Premium-Website mit exklusiven Inhalten</li>
-            <li>Internationale Kooperationen</li>
-            <li>Expansion in neue Content-Formate</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">Künstlerische Entwicklung</h2>
-          <p className="mb-4">
-            MeliaX hat sich seit ihrem Debüt 2021 kontinuierlich weiterentwickelt. Ihr Fokus liegt auf:
-          </p>
-          <ul className="list-disc pl-6 mb-6">
-            <li>Professionelle Videoproduktionen in Studio-Qualität</li>
-            <li>Kreative Regie bei eigenen Projekten</li>
-            <li>Innovative Content-Konzepte</li>
-            <li>Zusammenarbeit mit renommierten Produktionsteams</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">Community und Fanbase</h2>
-          <p className="mb-6">
-            Die stetig wachsende Community schätzt besonders:
-          </p>
-          <ul className="list-disc pl-6 mb-6">
-            <li>Regelmäßige Fan-Events und Meet & Greets</li>
-            <li>Persönliche Interaktion in Live-Streams</li>
-            <li>Exklusive Behind-the-Scenes Einblicke</li>
-            <li>VIP-Mitgliedschaften mit Zusatzinhalten</li>
+            <li>Tägliche Live Shows</li>
+            <li>Premium Content in Echtzeit</li>
+            <li>Exklusive Member Events</li>
+            <li>VIP Cam Sessions</li>
           </ul>
 
           <p className="text-sm text-gray-400 mt-8">
-            Hinweis: Alle Inhalte sind ausschließlich für Erwachsene bestimmt (18+)
+            Hinweis: Alle Live-Inhalte sind ausschließlich für Erwachsene bestimmt (18+)
           </p>
         </article>
-
-        {/* Bildergalerie */}
-        <section className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">MeliaX Porn Exklusive Galerie</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              'Foto 05.01.25, 14 53 54 (1).jpg',
-              'Foto 12.10.24, 14 43 00.jpg',
-              'Foto 12.10.24, 14 46 58.jpg',
-              'Foto 13.10.24, 17 43 47.jpg',
-              'Foto 13.10.24, 17 45 05.jpg',
-              'Foto 13.10.24, 17 50 05.jpg',
-              'Foto 17.10.24, 22 57 39.jpg',
-              'Foto 19.10.24, 10 17 38.jpg',
-              'Foto 23.10.24, 17 29 09.jpg',
-              'Foto 23.10.24, 17 30 02.jpg',
-              'Foto 26.10.24, 11 43 25 (1).jpg',
-              'Foto 26.10.24, 11 43 25.jpg',
-              'Foto 27.10.24, 21 03 36.jpg',
-              'Foto 27.10.24, 21 04 01.jpg',
-              'Foto 27.10.24, 21 04 22.jpg',
-              'Foto 28.10.24, 16 44 11.jpg',
-              'Foto 30.10.24, 16 23 05.jpg',
-              'Foto 30.10.24, 21 21 32.jpg'
-            ].map((foto, index) => (
-              <div key={index} className="relative group aspect-square overflow-hidden rounded-lg">
-                <img
-                  src={`/meliaxporn/${foto}`}
-                  alt={`MeliaX Porn Sex Cam Bild ${index + 1}`}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-2 left-2 text-white text-sm">
-                    <p>MeliaX Porn</p>
-                    <p className="text-xs opacity-75">Exklusiver Content</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
     </div>
   );
