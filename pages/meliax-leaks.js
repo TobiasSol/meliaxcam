@@ -105,7 +105,7 @@ export default function LeaksPage() {
         <meta property="og:site_name" content="MeliaX Leaks" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://meliax-porn.de/meliax-leaks" />
+        <link rel="canonical" href="https://meliax-cam.de/meliax-leaks" />
       </Head>
 
       <Navbar 

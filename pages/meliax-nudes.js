@@ -283,7 +283,7 @@ export default function NudesPage() {
         <meta property="og:site_name" content="MeliaX Nudes" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://meliax-porn.de/meliax-nudes" />
+        <link rel="canonical" href="https://meliax-cam.de/meliax-nudes" />
       </Head>
 
       <Navbar 
