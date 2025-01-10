@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
-export default function AdBanner() {
+export default function AdBanner({ className = "" }) {
   return (
-    <div className="relative overflow-hidden w-full">
+    <div className={`relative overflow-hidden w-full ${className}`}>
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5"></div>
       <div className="w-full max-w-[2000px] mx-auto">
         <div className="relative bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-pink-500/20 rounded-xl lg:rounded-3xl p-4 lg:p-8 border border-pink-500/10 backdrop-blur-sm">

@@ -1,4 +1,4 @@
-import { Home, PlaySquare, Heart, Video, Lock, Camera, Film } from 'lucide-react';
+import { Home, PlaySquare, Heart, Video, Lock, Camera, Film, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -8,7 +8,7 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     
     checkMobile();
@@ -35,10 +35,18 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
       
       <div className="relative flex-1 flex flex-col h-full">
-        <div className="p-8 mb-6">
+        <div className="p-8 mb-6 flex justify-between items-center">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent uppercase tracking-wider">
             MeliaX
           </h2>
+          {isMobile && (
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-pink-500/10 transition-colors"
+            >
+              <X className="w-6 h-6 text-pink-400" />
+            </button>
+          )}
         </div>
 
         <div className="px-6 flex-1">
@@ -91,7 +99,7 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
     return (
       <>
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-40 md:hidden overflow-y-auto">
+          <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 lg:hidden overflow-y-auto">
             {sidebarContent}
           </div>
         )}
@@ -100,7 +108,7 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
   }
 
   return (
-    <aside className="hidden md:block w-80 bg-black/80 backdrop-blur-lg border-r border-pink-500/10 fixed left-0 top-16 h-[calc(100vh-64px)]">
+    <aside className="hidden lg:block w-56 xl:w-56 lg:w-48 bg-black/80 backdrop-blur-lg border-r border-pink-500/10 fixed left-0 top-16 h-[calc(100vh-64px)]">
       {sidebarContent}
     </aside>
   );

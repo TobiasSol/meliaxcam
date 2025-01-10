@@ -2,283 +2,34 @@ import { useState, useEffect } from "react";
 import Head from 'next/head';
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import AdBanner from "../components/AdBanner";
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
-
-const ImageGallery = ({ images, selectedCategory }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const filteredImages = selectedCategory === 'all' 
-    ? images 
-    : images.filter(img => img.category?.toLowerCase() === selectedCategory);
-
-  const handlePrevious = (e) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
-    setSelectedImage(filteredImages[(currentIndex - 1 + filteredImages.length) % filteredImages.length]);
-  };
-
-  const handleNext = (e) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev + 1) % filteredImages.length);
-    setSelectedImage(filteredImages[(currentIndex + 1) % filteredImages.length]);
-  };
-
-  return (
-    <div className="col-span-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredImages.map((image) => (
-          <div
-            key={image.id}
-            className="group relative aspect-square overflow-hidden rounded-xl cursor-pointer bg-gray-900"
-            onClick={() => {
-              setSelectedImage(image);
-              setCurrentIndex(filteredImages.indexOf(image));
-              setIsLightboxOpen(true);
-            }}
-          >
-            <img
-              src={image.thumbnail_url}
-              alt={image.title}
-              className="w-full h-full object-cover transform transition-all duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div className="absolute bottom-0 p-4 w-full">
-                <h3 className="text-white text-lg font-bold mb-1">{image.title}</h3>
-                <p className="text-gray-200 text-sm line-clamp-2">{image.description}</p>
-                {image.tags && (
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {image.tags.map((tag, index) => (
-                      <span key={index} className="text-xs bg-red-600/50 text-white px-2 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Lightbox */}
-      {isLightboxOpen && selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
-          onClick={() => setIsLightboxOpen(false)}
-        >
-          <div className="relative w-full h-full flex items-center justify-center px-4 md:px-12">
-            <button 
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-red-500 transition-colors z-10"
-              onClick={handlePrevious}
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <div className="relative max-w-5xl max-h-[90vh]">
-              <img
-                src={selectedImage.thumbnail_url}
-                alt={selectedImage.title}
-                className="w-full h-full object-contain rounded-lg"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                <h2 className="text-white text-2xl font-bold mb-2">{selectedImage.title}</h2>
-                <p className="text-gray-200 mb-2">{selectedImage.description}</p>
-                {selectedImage.tags && (
-                  <div className="flex flex-wrap gap-2">
-                    {selectedImage.tags.map((tag, index) => (
-                      <span key={index} className="text-xs bg-red-600/50 text-white px-2 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <button 
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-red-500 transition-colors z-10"
-              onClick={handleNext}
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            <button 
-              className="absolute top-4 right-4 text-white hover:text-red-500 transition-colors"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsLightboxOpen(false);
-              }}
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
+import VideoGrid from "../components/VideoGrid";
+import ImageGallery from "../components/ImageGallery";
 
 export default function NudesPage() {
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [images, setImages] = useState([]);
 
-  const categories = [
-    'All', 'Latest', 'Popular', 'Exclusive', 'Premium'
-  ];
+  const images = Array.from({ length: 15 }, (_, i) => ({
+    id: i + 1,
+    src: `/leaks/meliax leak (${i + 1}).jpg`,
+    alt: `MeliaX Nude Bild ${i + 1}`,
+    title: `MeliaX Nude ${i + 1}`
+  }));
 
   useEffect(() => {
-    fetchImages();
-  }, []);
-  
-  const fetchImages = async () => {
-    const localImages = [
-      {
-        id: 1,
-        title: "MeliaX Exklusiver Premium Content",
-        description: "Intime Einblicke von MeliaX",
-        thumbnail_url: "/nudes/meliax nudes (1).jpeg",
-        category: "premium",
-        tags: ["meliax nackt", "meliax onlyfans leak", "premium"]
-      },
-      {
-        id: 2,
-        title: "MeliaX Private Aufnahmen",
-        description: "Exklusive private Aufnahmen",
-        thumbnail_url: "/nudes/meliax nudes (2).jpeg",
-        category: "exclusive",
-        tags: ["meliax naked", "meliax free", "exclusive"]
-      },
-      {
-        id: 3,
-        title: "MeliaX Intime Momente",
-        description: "Persönliche Einblicke von MeliaX",
-        thumbnail_url: "/nudes/meliax nudes (3).jpeg",
-        category: "premium",
-        tags: ["meliax porno", "meliax onlyfans leaks", "premium"]
-      },
-      {
-        id: 4,
-        title: "MeliaX Heiße Show",
-        description: "Aufregende Momente mit MeliaX",
-        thumbnail_url: "/nudes/meliax nudes (4).jpeg",
-        category: "latest",
-        tags: ["meliax camwhores", "meliax dildo", "latest"]
-      },
-      {
-        id: 5,
-        title: "MeliaX Exklusiv",
-        description: "Neue exklusive Aufnahmen",
-        thumbnail_url: "/nudes/meliax nudes (5).jpeg",
-        category: "exclusive",
-        tags: ["meliax fuck", "meliax nackt", "exclusive"]
-      },
-      {
-        id: 6,
-        title: "MeliaX Premium Show",
-        description: "Premium Content von MeliaX",
-        thumbnail_url: "/nudes/meliax nudes (6).jpeg",
-        category: "premium",
-        tags: ["meliax onlyfans leak", "meliax naked", "premium"]
-      },
-      {
-        id: 7,
-        title: "MeliaX Heißer Content",
-        description: "Brandneue Aufnahmen",
-        thumbnail_url: "/nudes/meliax nudes (7).jpeg",
-        category: "latest",
-        tags: ["meliax porno", "meliax free", "latest"]
-      },
-      {
-        id: 8,
-        title: "MeliaX VIP Content",
-        description: "Exklusive VIP Einblicke",
-        thumbnail_url: "/nudes/meliax nudes (8).jpeg",
-        category: "premium",
-        tags: ["meliax dildo", "meliax onlyfans leaks", "premium"]
-      },
-      {
-        id: 9,
-        title: "MeliaX Private Show",
-        description: "Private Momente mit MeliaX",
-        thumbnail_url: "/nudes/meliax nudes (9).jpeg",
-        category: "exclusive",
-        tags: ["meliax camwhores", "meliax nackt", "exclusive"]
-      },
-      {
-        id: 10,
-        title: "MeliaX Unzensiert",
-        description: "Unzensierte Aufnahmen",
-        thumbnail_url: "/nudes/meliax nudes (10).jpeg",
-        category: "premium",
-        tags: ["meliax fuck", "meliax naked", "premium"]
-      },
-      {
-        id: 11,
-        title: "MeliaX Intim",
-        description: "Intime Momente",
-        thumbnail_url: "/nudes/meliax nudes (11).jpeg",
-        category: "exclusive",
-        tags: ["meliax onlyfans leak", "meliax porno", "exclusive"]
-      },
-      {
-        id: 12,
-        title: "MeliaX Hot Content",
-        description: "Heiße neue Aufnahmen",
-        thumbnail_url: "/nudes/meliax nudes (12).jpeg",
-        category: "latest",
-        tags: ["meliax free", "meliax nackt", "latest"]
-      },
-      {
-        id: 13,
-        title: "MeliaX Premium Exclusive",
-        description: "Premium Exklusiv Content",
-        thumbnail_url: "/nudes/meliax nudes (13).jpeg",
-        category: "premium",
-        tags: ["meliax onlyfans leaks", "meliax naked", "premium"]
-      },
-      {
-        id: 14,
-        title: "MeliaX Special Content",
-        description: "Spezieller VIP Content",
-        thumbnail_url: "/nudes/meliax nudes (14).jpeg",
-        category: "exclusive",
-        tags: ["meliax dildo", "meliax camwhores", "exclusive"]
-      }
-    ];
-
-    try {
-      setImages(localImages);
-    } catch (error) {
-      console.error('Fehler beim Laden der Bilder:', error);
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
-  };
+    }, 500);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white">
       <Head>
-        <title>MeliaX Nudes - Premium Nacktbilder & Videos | Offizielle Seite</title>
-        <meta name="description" content="Genieße MeliaX Nudes mit exklusiven Nacktbildern und Videos. Premium-Content, private Aufnahmen und intime Einblicke. Täglich neue Updates!" />
-        <meta name="keywords" content="meliax nudes, meliax nude pics, meliax nude content, meliax nude videos, meliax premium nudes, meliax exclusive nudes" />
-        <meta property="og:title" content="MeliaX Nudes - Exclusive Nude Pictures & Videos" />
-        <meta property="og:description" content="Watch exclusive MeliaX nudes and private content. The hottest nude pictures and videos." />
+        <title>MeliaX Nudes - Exklusive Bilder & Private Galerie | Offizielle Seite</title>
+        <meta name="description" content="Entdecke MeliaX Nudes mit exklusiven Bildern und privater Galerie. Premium-Content, intime Einblicke und tägliche Updates. Jetzt Zugang sichern!" />
+        <meta name="keywords" content="meliax nudes, meliax bilder, meliax galerie, meliax premium content, meliax private bilder, meliax exklusiv" />
+        <meta property="og:title" content="MeliaX Nudes - Exclusive Adult Content & Private Gallery" />
+        <meta property="og:description" content="Join MeliaX's exclusive nude gallery for premium adult content and private photos." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="MeliaX Nudes" />
         <meta name="robots" content="index, follow" />
@@ -295,27 +46,7 @@ export default function NudesPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
-        {/* Categories */}
-        <div className="mt-8 lg:mt-12 mb-8 lg:mb-12 flex gap-3 lg:gap-4 overflow-x-auto pb-2 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category.toLowerCase())}
-              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap transition-all duration-300
-                ${selectedCategory === category.toLowerCase()
-                  ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20'
-                  : 'bg-gray-900/50 text-gray-300 hover:bg-pink-500/10 border border-pink-500/10'}`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Ad Banner */}
-        <AdBanner />
-
-        {/* Main Content */}
+      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-2 pb-16">
         <div className="mt-8 lg:mt-16 grid grid-cols-1 gap-8">
           {loading ? (
             <div className="text-center py-12">
@@ -325,7 +56,7 @@ export default function NudesPage() {
             <div className="w-full">
               <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
                 <h2 className="text-xl lg:text-2xl font-bold mb-6 text-pink-400">MeliaX Nudes</h2>
-                <ImageGallery images={images} selectedCategory={selectedCategory} />
+                <ImageGallery images={images} />
               </div>
             </div>
           )}

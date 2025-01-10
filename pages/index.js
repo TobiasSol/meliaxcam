@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import Head from 'next/head';
-import AdBanner from "../components/AdBanner";
 import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const categories = [
-    'All', 'Latest', 'Popular', 'Custom', 'Exclusive', 'Premium'
-  ];
-
   return (
     <div className="min-h-screen bg-black text-white">
       <Head>
@@ -25,25 +18,7 @@ export default function Home() {
       </Head>
       
       <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
-        {/* Categories - verbesserte mobile Darstellung */}
-        <div className="mt-8 lg:mt-12 mb-8 lg:mb-12 flex gap-3 lg:gap-4 overflow-x-auto pb-2 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category.toLowerCase())}
-              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap transition-all duration-300
-                ${selectedCategory === category.toLowerCase()
-                  ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20'
-                  : 'bg-gray-900/50 text-gray-300 hover:bg-pink-500/10 border border-pink-500/10'}`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        <AdBanner />
-
-        {/* Live Cam Card - responsive Anpassungen */}
+        {/* Live Cam Card */}
         <div className="mt-8 lg:mt-16">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl lg:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
@@ -80,7 +55,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SEO Article - responsive Typography */}
+        {/* SEO Article */}
         <article className="mt-8 lg:mt-16 prose prose-invert max-w-none">
           <h1 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
             MeliaX: Deine exklusive Live Cam Experience
