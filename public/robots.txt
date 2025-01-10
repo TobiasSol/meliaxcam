@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://meliax-porn.de/sitemap.xml
+Sitemap: https://meliax-cam.de/sitemap.xml
 
 # Verbiete Zugriff auf Admin-Bereiche
 Disallow: /api/admin/
