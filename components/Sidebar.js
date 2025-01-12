@@ -26,6 +26,7 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
     { icon: <Camera size={20} />, label: 'NUDES', href: '/meliax-nudes' },
     { icon: <Film size={20} />, label: 'SEX', href: '/meliax-sex' },
     { icon: <Camera size={20} />, label: 'NACKT', href: '/meliax-nackt' },
+    { icon: <Video size={20} />, label: 'PORN', href: '/meliax-porn' },
   ];
 
   const sidebarContent = (
