@@ -7,12 +7,28 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import RightSidebar from '../components/RightSidebar';
 import { useState } from 'react';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black flex flex-col relative">
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-8LJYP0Q25D"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-8LJYP0Q25D');
+        `}
+      </Script>
+
       <Navbar 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
