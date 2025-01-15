@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
           setIsMobileMenuOpen={setIsMobileMenuOpen} 
         />
         <div className="flex-1 flex flex-col">
-          <main className="flex-1 px-4 lg:px-0 lg:ml-48 xl:ml-56 lg:mr-80 pt-[120px] md:pt-[120px] pb-16">
+          <main className="flex-1  lg:px-0 lg:ml-48 xl:ml-56 lg:mr-80 pt-[120px] md:pt-[120px] pb-16">
             <Component {...pageProps} />
           </main>
           <Footer />

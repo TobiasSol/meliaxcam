@@ -1,4 +1,5 @@
 import { Bell, User, Menu } from 'lucide-react';
+import { FaTwitch, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
 import AdBanner from './AdBanner';
 
@@ -19,32 +20,77 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </Link>
         </div>
 
-        <div className="flex-1 max-w-5xl mx-auto px-4 py-4">
+        <div className="flex-1 max-w-5xl mx-auto px-4 ">
           <AdBanner />
         </div>
 
-        <div className="md:hidden lg:flex items-center gap-6">
-          <Bell className="text-gray-400 hover:text-pink-500 transition-colors cursor-pointer w-6 h-6" />
-          <User className="text-gray-400 hover:text-pink-500 transition-colors cursor-pointer w-6 h-6" />
+        <div className="md:hidden lg:flex items-center gap-4 ">
+          <Link 
+            href="https://www.twitch.tv/emmaxschwarz" 
+            className="text-pink-400 hover:text-pink-300 transition-all duration-300
+                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
+                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
+          >
+            <FaTwitch size={24} />
+          </Link>
+          <Link 
+            href="https://twitter.com/emmaxschwarz" 
+            className="text-pink-400 hover:text-pink-300 transition-all duration-300
+                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
+                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
+          >
+            <FaTwitter size={24} />
+          </Link>
+          <Link 
+            href="https://www.instagram.com/me.lia.x" 
+            className="text-pink-400 hover:text-pink-300 transition-all duration-300
+                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
+                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
+          >
+            <FaInstagram size={24} />
+          </Link>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden flex items-center h-16 px-4">
-        <div className="flex items-center gap-4">
-          <Menu 
-            className="text-gray-400 hover:text-pink-500 transition-colors cursor-pointer" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          />
-          <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
-              MeliaX
-            </span>
-          </Link>
+      <div className="md:hidden flex flex-col">
+        <div className="flex items-center justify-between h-16 px-4">
+          <div className="flex items-center gap-4">
+            <Menu 
+              className="text-gray-400 hover:text-pink-500 transition-colors cursor-pointer" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+            <Link href="/" className="flex items-center">
+              <span className="text-xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
+                MeliaX
+              </span>
+            </Link>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Link 
+              href="https://www.twitch.tv/emmaxschwarz" 
+              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
+            >
+              <FaTwitch size={22} />
+            </Link>
+            <Link 
+              href="https://twitter.com/emmaxschwarz" 
+              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
+            >
+              <FaTwitter size={22} />
+            </Link>
+            <Link 
+              href="https://www.instagram.com/me.lia.x" 
+              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
+            >
+              <FaInstagram size={22} />
+            </Link>
+          </div>
         </div>
-
-        <div className="flex items-center gap-4">
-          <User className="text-gray-400 hover:text-pink-500 transition-colors cursor-pointer" />
+        
+        <div className="w-full">
+          <AdBanner />
         </div>
       </div>
     </nav>
