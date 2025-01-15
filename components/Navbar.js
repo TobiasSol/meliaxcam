@@ -1,5 +1,5 @@
 import { Bell, User, Menu } from 'lucide-react';
-import { FaTwitch, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaTwitch, FaTwitter, FaInstagram, FaTiktok } from 'react-icons/fa';
 import Link from 'next/link';
 import AdBanner from './AdBanner';
 
@@ -20,35 +20,41 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </Link>
         </div>
 
-        <div className="flex-1 max-w-5xl mx-auto px-4 ">
+        <div className="flex-1 max-w-5xl mx-auto px-4">
           <AdBanner />
         </div>
 
-        <div className="md:hidden lg:flex items-center gap-4 ">
-          <Link 
-            href="https://www.twitch.tv/emmaxschwarz" 
-            className="text-pink-400 hover:text-pink-300 transition-all duration-300
-                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
-                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
-          >
-            <FaTwitch size={24} />
-          </Link>
-          <Link 
-            href="https://twitter.com/emmaxschwarz" 
-            className="text-pink-400 hover:text-pink-300 transition-all duration-300
-                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
-                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
-          >
-            <FaTwitter size={24} />
-          </Link>
-          <Link 
-            href="https://www.instagram.com/me.lia.x" 
-            className="text-pink-400 hover:text-pink-300 transition-all duration-300
-                       hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20
-                       p-2 rounded-lg hover:bg-pink-500/5 flex items-center justify-center"
-          >
-            <FaInstagram size={24} />
-          </Link>
+        {/* Social Media Icons nach rechts mit mehr Abstand */}
+        <div className="md:hidden lg:flex flex-col items-center mr-8">
+          <span className="text-sm text-pink-500 animate-pulse mb-2 font-bold text-center">
+            ❤️ Folg mir und bekomm was fürs Auge! ❤️
+          </span>
+          <div className="flex items-center justify-center gap-4">
+            <a 
+              href="https://www.instagram.com/me.lia.x"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-400 transition-colors"
+            >
+              <FaInstagram size={24} />
+            </a>
+            <a 
+              href="https://www.tiktok.com/@me.lia.x"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-400 transition-colors"
+            >
+              <FaTiktok size={24} />
+            </a>
+            <a 
+              href="https://twitter.com/me_lia_x"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-400 transition-colors"
+            >
+              <FaTwitter size={24} />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -67,25 +73,36 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             </Link>
           </div>
           
-          <div className="flex items-center gap-3">
-            <Link 
-              href="https://www.twitch.tv/emmaxschwarz" 
-              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
-            >
-              <FaTwitch size={22} />
-            </Link>
-            <Link 
-              href="https://twitter.com/emmaxschwarz" 
-              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
-            >
-              <FaTwitter size={22} />
-            </Link>
-            <Link 
-              href="https://www.instagram.com/me.lia.x" 
-              className="text-pink-400 hover:text-pink-300 transition-all duration-300"
-            >
-              <FaInstagram size={22} />
-            </Link>
+          <div className="flex flex-col items-center">
+            <span className="text-xs text-pink-500 animate-pulse mb-2 font-medium text-center">
+              ❤️ Folg mir! ❤️
+            </span>
+            <div className="flex items-center justify-center gap-3">
+              <a 
+                href="https://www.instagram.com/me.lia.x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaInstagram size={24} />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@me.lia.x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaTiktok size={24} />
+              </a>
+              <a 
+                href="https://twitter.com/me_lia_x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaTwitter size={24} />
+              </a>
+            </div>
           </div>
         </div>
         
