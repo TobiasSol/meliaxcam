@@ -12,10 +12,32 @@ export default function ChatPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasBeenShown, setHasBeenShown] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Bilder vorladen
+  useEffect(() => {
+    const imagePromises = images.map((src) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
+
+    Promise.all(imagePromises)
+      .then(() => {
+        setImagesLoaded(true);
+      })
+      .catch((err) => {
+        console.error('Error preloading images:', err);
+        setImagesLoaded(true); // Trotzdem fortfahren bei Fehlern
+      });
+  }, []);
 
   useEffect(() => {
-    // Zeige Popup nach 5 Sekunden, aber nur einmal
-    if (!hasBeenShown) {
+    // Zeige Popup erst nach 5 Sekunden UND wenn die Bilder geladen sind
+    if (!hasBeenShown && imagesLoaded) {
       const timer = setTimeout(() => {
         setIsVisible(true);
         setHasBeenShown(true);
@@ -23,7 +45,7 @@ export default function ChatPopup() {
 
       return () => clearTimeout(timer);
     }
-  }, [hasBeenShown]);
+  }, [hasBeenShown, imagesLoaded]);
 
   useEffect(() => {
     // Bildwechsel alle 5 Sekunden
