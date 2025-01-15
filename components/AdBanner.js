@@ -1,9 +1,15 @@
 import Image from 'next/image';
 import { Sparkles, ArrowRight } from 'lucide-react';
+import { usePopup } from '../contexts/PopupContext';
 
 export default function AdBanner({ className = "" }) {
+  const { setShowOffer } = usePopup();
+
   return (
-    <div className={`relative  w-full ${className}`}>
+    <div 
+      className={`relative w-full ${className} cursor-pointer`}
+      onClick={() => setShowOffer(true)}
+    >
       <video
         className="absolute inset-0 w-full h-full object-fit"
         autoPlay

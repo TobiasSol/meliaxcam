@@ -59,8 +59,8 @@ export default function ChatPopup() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-md mx-auto animate-pulse-slow">
+    <div className="fixed inset-0 z-50 flex items-center md:items-center sm:items-end justify-center p-4 bg-black/50 backdrop-blur-sm">
+      <div className="relative w-full max-w-md mx-auto mt-36 sm:mb-20">
         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl blur-[2px]"></div>
         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl"></div>
 
