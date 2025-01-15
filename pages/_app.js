@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar';
 import RightSidebar from '../components/RightSidebar';
 import { useState } from 'react';
 import Script from 'next/script';
+import ChatPopup from '../components/ChatPopup';
 
 function MyApp({ Component, pageProps }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,6 +30,8 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
+      <ChatPopup />
+      
       <Navbar 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 

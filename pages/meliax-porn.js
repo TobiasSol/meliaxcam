@@ -71,6 +71,9 @@ export default function PornPage() {
     }
   ];
 
+  const firstImages = pornImages.slice(0, 1);
+  const remainingImages = pornImages.slice(1);
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);
@@ -116,11 +119,40 @@ export default function PornPage() {
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {pornImages.map((image) => (
-                    <div 
-                      key={image.id}
-                      className="group relative aspect-[3/4] rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
-                    >
+                  {firstImages.map((image) => (
+                    <div key={image.id} className="group relative aspect-[3/4] rounded-lg overflow-hidden hover:opacity-90 transition-opacity">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        title={image.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={image.id <= 4}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h3 className="text-white text-sm font-medium">
+                            {image.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Gratis Video Element */}
+                  <div className="group relative aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/10">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                      <h3 className="text-xl font-bold text-pink-400 mb-2">Gratis Porno von MeliaX</h3>
+                      <p className="text-gray-300 text-sm mb-4">Exklusiver kostenloser Einblick</p>
+                      <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-semibold transition-colors text-sm">
+                        Gratis Video ansehen
+                      </button>
+                    </div>
+                  </div>
+
+                  {remainingImages.map((image) => (
+                    <div key={image.id} className="group relative aspect-[3/4] rounded-lg overflow-hidden hover:opacity-90 transition-opacity">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -141,6 +173,96 @@ export default function PornPage() {
                   ))}
                 </div>
               </div>
+
+              {/* SEO Artikel */}
+              <article className="mt-12 bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-pink-400">
+                  MeliaX Porn - Dein exklusiver Einblick in private Momente
+                </h2>
+                
+                <div className="prose prose-invert max-w-none">
+                  <p className="mb-4">
+                    Willkommen in der faszinierenden Welt von MeliaX Porn, wo du exklusive Einblicke und intime Momente erleben kannst. Als eine der gefragtesten Content-Kreatorinnen im deutschsprachigen Raum bietet MeliaX ihren Fans außergewöhnliche und authentische Adult-Unterhaltung auf höchstem Niveau.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Exklusive MeliaX Porn Inhalte
+                  </h3>
+                  <p className="mb-4">
+                    In unserer ständig wachsenden Sammlung findest du eine Vielzahl an hochwertigen Produktionen. Von verführerischen Soloaufnahmen bis hin zu intensiven Begegnungen - MeliaX Porn bietet für jeden Geschmack das passende Material. Jedes Video wird mit größter Sorgfalt und Leidenschaft produziert, um dir unvergessliche Momente zu bescheren.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Premium Qualität und regelmäßige Updates
+                  </h3>
+                  <p className="mb-4">
+                    Als Premium-Mitglied profitierst du von täglichen Updates und Zugang zum kompletten MeliaX Porn Archiv. Alle Videos werden in gestochen scharfer Qualität aufgenommen und bieten dir ein unvergleichliches Seherlebnis. Die professionelle Produktion garantiert beste Unterhaltung in Full HD.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Persönliche Interaktion und private Einblicke
+                  </h3>
+                  <p className="mb-4">
+                    Was MeliaX Porn besonders macht, ist die authentische und persönliche Note. Durch regelmäßige Live-Sessions und private Chatmöglichkeiten entsteht eine einzigartige Bindung zwischen Creator und Community. Diese intime Atmosphäre macht jeden Besuch zu einem besonderen Erlebnis.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Sicher und diskret
+                  </h3>
+                  <p className="mb-4">
+                    Deine Privatsphäre hat bei MeliaX Porn höchste Priorität. Alle Zahlungen und Interaktionen werden absolut diskret und sicher abgewickelt. Das Premium-Mitgliedschaftssystem garantiert dir exklusiven Zugang zu allen Inhalten, während deine persönlichen Daten bestmöglich geschützt bleiben.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Vielfältiges Content-Angebot
+                  </h3>
+                  <p className="mb-4">
+                    Das MeliaX Porn Repertoire umfasst eine breite Palette an Kategorien und Genres. Von romantischen Softcore-Szenen bis hin zu leidenschaftlichen Hardcore-Produktionen findest du hier alles, was das Herz begehrt. Besonders beliebt sind die authentischen Solo-Performances und die intimen POV-Aufnahmen, die dir das Gefühl geben, hautnah dabei zu sein.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Technische Qualitätsstandards
+                  </h3>
+                  <p className="mb-4">
+                    Bei MeliaX Porn wird großer Wert auf technische Exzellenz gelegt. Alle Videos werden mit modernster Aufnahmetechnik produziert und in verschiedenen Qualitätsstufen bis hin zu 4K angeboten. Die optimierte Streaming-Technologie gewährleistet dabei ein reibungsloses Seherlebnis auf allen Endgeräten - vom Smartphone bis zum Smart-TV.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Community und Interaktion
+                  </h3>
+                  <p className="mb-4">
+                    Die MeliaX Porn Community ist bekannt für ihren respektvollen Umgang und den aktiven Austausch untereinander. In moderierten Foren und Chat-Bereichen können sich Mitglieder austauschen, Wünsche äußern und Feedback geben. Diese enge Verbindung zur Community fließt direkt in die Gestaltung neuer Inhalte ein.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Exklusive Vorteile für Premium-Mitglieder
+                  </h3>
+                  <p className="mb-4">
+                    Premium-Mitglieder genießen bei MeliaX Porn zahlreiche Vorteile. Neben dem Zugriff auf das komplette Videoarchiv erhältst du Vorabzugang zu neuen Releases, kannst an exklusiven Live-Events teilnehmen und profitierst von speziellen Behind-the-Scenes Einblicken. Das Feedback der Premium-Community hat dabei direkten Einfluss auf zukünftige Produktionen.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Mobile Optimierung und Verfügbarkeit
+                  </h3>
+                  <p className="mb-4">
+                    Die MeliaX Porn Plattform ist vollständig für mobile Endgeräte optimiert. Egal ob Android oder iOS - die responsive Webseite passt sich perfekt an dein Gerät an. Downloads sind in verschiedenen Qualitätsstufen verfügbar, sodass du deine Lieblingsvideos auch offline genießen kannst.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Regelmäßige Content-Updates
+                  </h3>
+                  <p className="mb-4">
+                    Mit mehreren Updates pro Woche bleibt die MeliaX Porn Bibliothek stets aktuell und spannend. Der Veröffentlichungskalender wird regelmäßig im Voraus bekannt gegeben, sodass du keine neue Veröffentlichung verpasst. Zusätzlich gibt es spontane Bonus-Releases und Überraschungscontent für treue Mitglieder.
+                  </p>
+
+                  <h3 className="text-xl font-semibold mb-3 text-pink-300">
+                    Datenschutz und Sicherheit
+                  </h3>
+                  <p className="mb-4">
+                    MeliaX Porn setzt modernste Verschlüsselungstechnologien ein, um deine Daten zu schützen. Alle Verbindungen sind SSL-verschlüsselt, und die Zahlungsabwicklung erfolgt über renommierte Payment-Provider. Die Mitgliederdaten werden nach strengsten Datenschutzrichtlinien verwaltet und niemals an Dritte weitergegeben.
+                  </p>
+                </div>
+              </article>
             </div>
           )}
         </div>
