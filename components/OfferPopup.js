@@ -8,14 +8,14 @@ const SpecialOfferPopup = () => {
   if (!showOffer) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm mt-24">
-      <div className="relative w-full max-w-lg mx-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ">
+      <div className="relative w-full max-w-lg mx-auto mt-96 sm:mt-48">
         {/* Animierter Neon-Rand */}
         <div className="absolute -inset-[3px] bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-2xl opacity-75 blur-lg animate-pulse-slow group-hover:opacity-100 transition-opacity"></div>
         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-xl"></div>
         
         {/* Hauptcontainer mit schwarzem Hintergrund */}
-        <div className="relative bg-black rounded-xl">
+        <div className="relative bg-black rounded-xl ">
           <button 
             onClick={() => setShowOffer(false)}
             className="absolute -top-4 -right-4 z-10 p-2 bg-black/80 rounded-full hover:bg-black/90 transition-colors"
