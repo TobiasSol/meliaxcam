@@ -8,8 +8,8 @@ const SpecialOfferPopup = () => {
   if (!showOffer) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-lg mx-auto mt-52 sm:mt-48  mb-36">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-lg mx-auto mt-24 sm:mt-48 mb-36">
         {/* Animierter Neon-Rand */}
         <div className="absolute -inset-[3px] bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-2xl opacity-75 blur-lg animate-pulse-slow group-hover:opacity-100 transition-opacity"></div>
         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-xl"></div>
