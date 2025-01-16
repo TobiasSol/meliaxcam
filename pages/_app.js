@@ -11,6 +11,7 @@ import Script from 'next/script';
 import ChatPopup from '../components/ChatPopup';
 import OfferPopup from '../components/OfferPopup';
 import { PopupProvider } from '../contexts/PopupContext';
+import ImagePreloader from '../components/ImagePreloader';
 
 function MyApp({ Component, pageProps }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <PopupProvider>
       <div className="min-h-screen bg-black flex flex-col relative">
+        <ImagePreloader />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-8LJYP0Q25D"
