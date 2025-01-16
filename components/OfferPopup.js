@@ -82,7 +82,7 @@ const SpecialOfferPopup = () => {
               </div>
 
               <a 
-                href="https://maloum.com/meliax" 
+                href="https://tinyurl.com/meliaxcam" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white py-3 rounded-lg font-bold hover:from-orange-600 hover:to-amber-600 transition-all duration-300 shadow-lg shadow-orange-500/25"
