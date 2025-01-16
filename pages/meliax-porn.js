@@ -275,6 +275,19 @@ export default function PornPage() {
           )}
         </div>
       </main>
+
+      {/* Shimmer Animation Styles hinzufügen */}
+      <style jsx global>{`
+        .shimmer {
+          animation: shimmer 1.5s infinite linear;
+          background-size: 200% 100%;
+        }
+
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </div>
   );
 } 
