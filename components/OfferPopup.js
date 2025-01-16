@@ -8,7 +8,7 @@ const SpecialOfferPopup = () => {
   if (!showOffer) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm mt-24">
       <div className="relative w-full max-w-lg mx-auto">
         <button 
           onClick={() => setShowOffer(false)}
@@ -44,7 +44,7 @@ const SpecialOfferPopup = () => {
               </div>
 
               <a 
-                href="https://onlyfans.com/meliax" 
+                href="https://onlyfans.com/meliax/c20" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-blue-500/25"

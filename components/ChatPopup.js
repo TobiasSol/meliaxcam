@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, ExternalLink, X } from 'lucide-react';
+import { usePopup } from '../contexts/PopupContext';
 
 const images = [
   '/meliaxporn/meliaxass.jpg',
@@ -13,6 +14,7 @@ export default function ChatPopup() {
   const [hasBeenShown, setHasBeenShown] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const { setShowOffer } = usePopup();
 
   // Bilder vorladen
   useEffect(() => {
@@ -92,12 +94,9 @@ export default function ChatPopup() {
               <div className="relative h-full px-6 py-8 flex flex-col items-center justify-between gap-6">
                 <div className="text-center space-y-4 w-full">
                   <div className="flex items-center justify-center gap-3 mb-3">
-                    <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
-                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                      <span className="text-white/90 text-xs font-medium uppercase tracking-wider drop-shadow-lg">Live</span>
-                    </div>
-                    <div className="bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10 shadow-lg">
-                      <span className="text-white/90 text-xs font-bold tracking-widest drop-shadow-lg">OnlyFans</span>
+                    <div className="flex items-center gap-3 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 shadow-lg">
+                      <div className="w-3 h-3 rounded-full bg-green-500 animate-[pulse_1.5s_ease-in-out_infinite]"></div>
+                      <span className="text-white/90 text-sm font-bold uppercase tracking-wider drop-shadow-lg">Live</span>
                     </div>
                   </div>
                   
@@ -112,7 +111,13 @@ export default function ChatPopup() {
                 </div>
 
                 <div className="w-full">
-                  <button className="w-full group relative shadow-xl">
+                  <button 
+                    onClick={() => {
+                      setIsVisible(false);
+                      setShowOffer(true);
+                    }}
+                    className="w-full group relative shadow-xl"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-xl"></div>
                     <div className="relative px-8 py-4 rounded-xl bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center gap-3 group-hover:bg-white/5 transition-all duration-300">
                       <MessageCircle className="w-5 h-5 text-white drop-shadow" />
