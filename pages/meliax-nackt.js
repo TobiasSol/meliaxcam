@@ -4,6 +4,17 @@ import Image from 'next/image';
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
+// Gemeinsame ShimmerEffect Komponente
+const ShimmerEffect = () => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {[...Array(10)].map((_, i) => (
+      <div key={i} className="relative aspect-[3/4] rounded-lg overflow-hidden bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent shimmer"></div>
+      </div>
+    ))}
+  </div>
+);
+
 export default function NacktPage() {
   const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,7 +83,7 @@ export default function NacktPage() {
   ];
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setLoading(false), 300);
   }, []);
 
   return (
@@ -101,20 +112,16 @@ export default function NacktPage() {
       
       <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-2 pb-16">
         <div className="mt-8 lg:mt-16">
-          {loading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto"></div>
-            </div>
-          ) : (
-            <div className="w-full">
-              <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
-                <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-pink-400">
-                  MeliaX Nackt
-                </h1>
-                <p className="text-gray-300 mb-8">
-                  Exklusive MeliaX Nacktbilder und private Aufnahmen. Premium Nacktcontent und intime Einblicke in täglichen Updates.
-                </p>
-                
+          <div className="w-full">
+            <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
+              <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-pink-400">
+                MeliaX Nackt
+              </h1>
+              <p className="text-gray-300 mb-8">
+                Exklusive MeliaX Nacktbilder und private Aufnahmen. Premium Nacktcontent und intime Einblicke in täglichen Updates.
+              </p>
+              
+              {loading ? <ShimmerEffect /> : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {nacktImages.map((image) => (
                     <div 
@@ -140,11 +147,23 @@ export default function NacktPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </main>
+
+      <style jsx global>{`
+        .shimmer {
+          animation: shimmer 1.5s infinite linear;
+          background-size: 200% 100%;
+        }
+
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </div>
   );
 } 

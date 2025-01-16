@@ -4,6 +4,16 @@ import Image from 'next/image';
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
+const ShimmerEffect = () => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {[...Array(10)].map((_, i) => (
+      <div key={i} className="relative aspect-[3/4] rounded-lg overflow-hidden bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent shimmer"></div>
+      </div>
+    ))}
+  </div>
+);
+
 export default function NudesPage() {
   const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,7 +82,7 @@ export default function NudesPage() {
   ];
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setLoading(false), 300);
   }, []);
 
   return (
@@ -102,9 +112,7 @@ export default function NudesPage() {
       <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-2 pb-16">
         <div className="mt-8 lg:mt-16">
           {loading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto"></div>
-            </div>
+            <ShimmerEffect />
           ) : (
             <div className="w-full">
               <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
