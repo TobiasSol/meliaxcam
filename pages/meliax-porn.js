@@ -14,6 +14,26 @@ const ShimmerEffect = () => (
   </div>
 );
 
+const LoadingEffect = () => (
+  <div className="space-y-8">
+    <div className="flex items-center justify-center flex-col gap-4">
+      <div className="w-16 h-16 border-4 border-pink-500/20 border-t-pink-500 rounded-full animate-spin"></div>
+      <div className="text-center">
+        <h3 className="text-lg font-semibold text-pink-400 mb-2">Premium Content wird geladen</h3>
+        <p className="text-gray-400 text-sm animate-pulse">Bitte warten...</p>
+      </div>
+    </div>
+    
+    {/* Fortschrittsbalken */}
+    <div className="max-w-md mx-auto">
+      <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+        <div className="h-full bg-gradient-to-r from-pink-500 to-purple-500 w-[85%] animate-progress"></div>
+      </div>
+      <p className="text-center text-gray-400 text-sm mt-2">Bilder werden geladen (85%)</p>
+    </div>
+  </div>
+);
+
 export default function PornPage() {
   const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -85,7 +105,7 @@ export default function PornPage() {
   const remainingImages = pornImages.slice(1);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 300);
+    setTimeout(() => setLoading(false), 1500);
   }, []);
 
   return (
@@ -115,7 +135,9 @@ export default function PornPage() {
       <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-2 pb-16">
         <div className="mt-8 lg:mt-16">
           {loading ? (
-            <ShimmerEffect />
+            <div className="bg-gray-900/50 rounded-xl backdrop-blur-sm border border-pink-500/10 p-12">
+              <LoadingEffect />
+            </div>
           ) : (
             <div className="w-full">
               <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-pink-500/10 p-6">
@@ -286,6 +308,18 @@ export default function PornPage() {
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
+        }
+      `}</style>
+
+      <style jsx global>{`
+        @keyframes progress {
+          0% { width: 0%; }
+          50% { width: 85%; }
+          100% { width: 85%; }
+        }
+        
+        .animate-progress {
+          animation: progress 1.5s ease-out forwards;
         }
       `}</style>
     </div>
