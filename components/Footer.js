@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Instagram, Twitch, Twitter, ArrowRight, Mail, Shield, Book } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
+import AdBanner from './AdBanner';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -19,26 +21,12 @@ export default function Footer() {
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5"></div>
           <div className="container mx-auto px-4 lg:px-0 py-16">
             <div className="relative bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-pink-500/20 rounded-3xl p-8 border border-pink-500/10 backdrop-blur-sm">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-3xl -translate-y-1/2"></div>
-              <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="text-center md:text-left">
-                  <h2 className="text-3xl font-bold uppercase tracking-wider">
-                    <span className="bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 bg-clip-text text-transparent">
-                      Ads Banner Mieten
-                    </span>
-                  </h2>
-                  <p className="mt-2 text-pink-200/80 uppercase text-sm tracking-wider">
-                    Werbe hier für dein Produkt oder Service
-                  </p>
-                </div>
-                <button className="group relative flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/20">
-                  <span className="relative z-10 text-white font-medium uppercase tracking-wider">
-                    Banner Mieten
-                  </span>
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform text-white" />
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </button>
-              </div>
+              
+              
+                <AdBanner className="" />
+    
+
+             
             </div>
           </div>
         </div>
@@ -68,13 +56,28 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Social Media</h3>
               <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <a 
+                  href="https://www.instagram.com/me.lia.x"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                >
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
-                  <Twitch className="w-5 h-5" />
+                <a 
+                  href="https://www.tiktok.com/@me.lia.x"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                >
+                  <FaTiktok className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <a 
+                  href="https://twitter.com/me_lia_x"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                >
                   <Twitter className="w-5 h-5" />
                 </a>
               </div>
