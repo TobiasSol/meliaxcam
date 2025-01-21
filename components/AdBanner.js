@@ -11,7 +11,7 @@ export default function AdBanner({ className = "" }) {
       onClick={() => setShowOffer(true)}
     >
       <video
-        className="absolute inset-0 w-full h-full object-fit"
+        className="absolute inset-0 w-full h-full object-fit border border-pink-50"
         autoPlay
         muted
         loop

@@ -107,7 +107,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </div>
         </div>
         
-        <div className="w-full">
+        <div className="w-full border border-pink-500">
           <AdBanner />
         </div>
 

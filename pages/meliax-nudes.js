@@ -146,6 +146,18 @@ export default function NudesPage() {
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <a href="https://onlyfans.com/meliax/c20" target="_blank" rel="noopener noreferrer" className="block">
+                    <div className="group relative aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/10 transition-transform hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-500/20">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                        <h3 className="text-xl font-bold text-pink-400 mb-2">Gratis Nudes von MeliaX</h3>
+                        <p className="text-gray-300 text-sm mb-4">Exklusiver kostenloser Einblick</p>
+                        <span className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-semibold transition-colors text-sm">
+                          Gratis Nudes ansehen
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+
                   {nudesImages.map((image) => (
                     <div 
                       key={image.id}
