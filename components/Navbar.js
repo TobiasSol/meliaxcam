@@ -72,43 +72,46 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
               </span>
             </Link>
           </div>
+          
+          {/* Neue Position für Social Media Icons im mobilen Layout */}
+          <div className="flex flex-col items-end">
+            <span className="text-xs text-pink-500 mb-1 font-medium">
+              ❤️ Folg mir! ❤️
+            </span>
+            <div className="flex items-center gap-2">
+              <a 
+                href="https://www.instagram.com/me.lia.x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaInstagram size={20} />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@me.lia.x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaTiktok size={20} />
+              </a>
+              <a 
+                href="https://twitter.com/me_lia_x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-500 hover:text-pink-400 transition-colors"
+              >
+                <FaTwitter size={20} />
+              </a>
+            </div>
+          </div>
         </div>
         
         <div className="w-full">
           <AdBanner />
         </div>
 
-        <div className="flex flex-col items-center">
-          <span className="text-xs text-pink-500 animate-pulse mb-2 font-medium text-center">
-            ❤️ Folg mir! ❤️
-          </span>
-          <div className="flex items-center justify-center gap-3">
-            <a 
-              href="https://www.instagram.com/me.lia.x"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pink-500 hover:text-pink-400 transition-colors"
-            >
-              <FaInstagram size={24} />
-            </a>
-            <a 
-              href="https://www.tiktok.com/@me.lia.x"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pink-500 hover:text-pink-400 transition-colors"
-            >
-              <FaTiktok size={24} />
-            </a>
-            <a 
-              href="https://twitter.com/me_lia_x"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pink-500 hover:text-pink-400 transition-colors"
-            >
-              <FaTwitter size={24} />
-            </a>
-          </div>
-        </div>
+        {/* Entferne den alten Social Media Bereich */}
       </div>
     </nav>
   );

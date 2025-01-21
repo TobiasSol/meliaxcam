@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5"></div>
           <div className="container mx-auto px-4 lg:px-0 py-16">
-            <div className="relative bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-pink-500/20 rounded-3xl p-8 border border-pink-500/10 backdrop-blur-sm">
+            <div className="relative bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-pink-500/20 rounded-3xl  border border-pink-500/10 backdrop-blur-sm">
               
               
                 <AdBanner className="" />

@@ -22,7 +22,7 @@ export default function AdBanner({ className = "" }) {
       
       <div className="w-full max-w-[2000px] mx-auto">
         <div className="relative rounded-xl lg:rounded-3xl ">
-          <div className="h-24 lg:h-36"></div>
+          <div className="h-16 lg:h-36"></div>
         </div>
       </div>
     </div>
