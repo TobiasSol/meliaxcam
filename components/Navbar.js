@@ -23,7 +23,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </Link>
         </div>
 
-        <div className="flex-1 w-full mx-auto px-4">
+        <div className="flex-1 max-w-5xl mx-auto py-2 z-50">
           <AdBanner />
         </div>
 
