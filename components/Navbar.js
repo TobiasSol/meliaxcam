@@ -6,6 +6,9 @@ import AdBanner from './AdBanner';
 export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
   return (
     <nav className="fixed top-0 left-0 right-0 h-auto bg-black/80 backdrop-blur-lg border-b border-pink-500/10 z-50">
+
+
+
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center min-h-[120px] px-6">
         <div className="flex items-center gap-4">
@@ -20,7 +23,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </Link>
         </div>
 
-        <div className="flex-1 max-w-5xl mx-auto px-4">
+        <div className="flex-1 w-full mx-auto px-4">
           <AdBanner />
         </div>
 
