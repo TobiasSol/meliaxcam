@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="de">
       <Head>
       <meta httpEquiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'inline-speculation-rules' 'wasm-unsafe-eval';" />
 
