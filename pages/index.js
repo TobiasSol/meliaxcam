@@ -31,8 +31,12 @@ export default function Home() {
                   loop
                   muted
                   playsInline
+                  preload="auto"
+                  controlsList="nodownload"
+                  disablePictureInPicture
                 >
                   <source src="/0218.mp4" type="video/mp4" />
+                  Ihr Browser unterstützt das Video-Tag nicht.
                 </video>
                 
                 {/* Overlay Gradient */}

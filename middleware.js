@@ -13,11 +13,12 @@ export async function middleware(request) {
     '/fonts',
     '/password',
     '/verify-password',
+    '.mp4',
   ];
 
   // Check if the path should be excluded
   const shouldExclude = EXCLUDED_PATHS.some(path => 
-    request.nextUrl.pathname.startsWith(path)
+    request.nextUrl.pathname.startsWith(path) || request.nextUrl.pathname.endsWith(path)
   );
 
   if (shouldExclude) {
