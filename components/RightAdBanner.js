@@ -9,7 +9,7 @@ export default function RightAdBanner({ className = "" }) {
       className={`relative overflow-hidden w-full ${className} cursor-pointer`}
       onClick={() => setShowOffer(true)}
     >
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5"></div>
+      <div className="absolute inset-0 opacity-5"></div>
       <div className="w-full">
         <div className="relative bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-pink-500/20 rounded-xl overflow-hidden border border-pink-500/10 backdrop-blur-sm">
           {/* Video Background */}
@@ -20,7 +20,7 @@ export default function RightAdBanner({ className = "" }) {
             muted
             playsInline
           >
-            <source src="/videos/rechtsbanner.mp4" type="video/mp4" />
+            <source src="https://swgczdsrrcuvmckcfowd.supabase.co/storage/v1/object/public/videos/rechtsbanner.mp4" type="video/mp4" />
           </video>
           
           {/* Leerer Container um die Höhe beizubehalten */}
