@@ -35,7 +35,7 @@ export default function Home() {
                   controlsList="nodownload"
                   disablePictureInPicture
                 >
-                  <source src="/0218.mp4" type="video/mp4" />
+                  <source src="https://swgczdsrrcuvmckcfowd.supabase.co/storage/v1/object/public/videos/0218.mp4" type="video/mp4" />
                   Ihr Browser unterstützt das Video-Tag nicht.
                 </video>
                 
