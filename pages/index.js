@@ -23,12 +23,30 @@ export default function Home() {
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl lg:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
             <div className="relative bg-gray-900/50 rounded-xl lg:rounded-2xl border border-pink-500/10 backdrop-blur-sm overflow-hidden">
-              <div className="aspect-video relative flex items-center justify-center bg-gradient-to-br from-pink-500/5 to-purple-500/5">
-                <div className="text-center">
+              <div className="aspect-video relative flex items-center justify-center">
+                {/* Video Background */}
+                <video
+                  className="absolute inset-0 w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="/0218.mp4" type="video/mp4" />
+                </video>
+                
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+                
+                {/* Content */}
+                <div className="relative text-center z-10">
                   <p className="text-pink-400 font-medium uppercase tracking-wider mb-2 lg:mb-3 text-xl lg:text-3xl">
-                    Bald Online
+                    Jetzt Live
                   </p>
-                  <span className="w-3 h-3 lg:w-4 lg:h-4 bg-pink-500 rounded-full inline-block animate-pulse"></span>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-3 h-3 lg:w-4 lg:h-4 bg-pink-500 rounded-full inline-block animate-[pulse_1.5s_ease-in-out_infinite]"></span>
+                    <span className="text-white/90 text-sm font-bold uppercase tracking-wider">Live</span>
+                  </div>
                 </div>
               </div>
 
