@@ -1,10 +1,12 @@
 import { Home, PlaySquare, Heart, Video, Lock, Camera, Film, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
   const [isMobile, setIsMobile] = useState(false);
-  const [activeItem, setActiveItem] = useState('/');
+  const router = useRouter();
+  const [activeItem, setActiveItem] = useState(router.pathname);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -16,6 +18,10 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    setActiveItem(router.pathname);
+  }, [router.pathname]);
 
   const menuItems = [
     { icon: <Home size={20} />, label: 'HOME', href: '/' },

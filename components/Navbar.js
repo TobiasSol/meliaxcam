@@ -34,7 +34,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
           </span>
           <div className="flex items-center justify-center gap-4">
             <a 
-              href="https://www.instagram.com/lia.the.real"
+              href="https://www.instagram.com/meliax_sweet/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-pink-500 hover:text-pink-400 transition-colors"
@@ -83,7 +83,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             </span>
             <div className="flex items-center gap-2">
               <a 
-                href="https://www.instagram.com/lia.the.real"
+                href="https://www.instagram.com/meliax_sweet/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink-500 hover:text-pink-400 transition-colors"

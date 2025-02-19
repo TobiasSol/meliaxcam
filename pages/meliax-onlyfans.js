@@ -2,7 +2,8 @@ import { useState } from "react";
 import Head from 'next/head';
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import { Heart, ExternalLink, Instagram, Twitter, Facebook, Globe } from 'lucide-react';
+import Image from 'next/image';
+import { Heart, ExternalLink, Instagram, Twitter, Facebook, Globe, Lock } from 'lucide-react';
 
 export default function OnlyFansPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,13 +44,29 @@ export default function OnlyFansPage() {
           {/* Profile Header */}
           <div className="bg-black/40 backdrop-blur-sm rounded-xl lg:rounded-2xl overflow-hidden border border-[#00AFF0]/20">
             {/* Banner Image */}
-            <div className="h-32 lg:h-48 bg-gradient-to-r from-[#00AFF0] to-[#0095CC]"></div>
+            <div className="h-32 lg:h-48 bg-gradient-to-r from-[#00AFF0] to-[#0095CC] relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h1 className="text-4xl lg:text-6xl font-bold text-white/90 tracking-wider">
+                  ONLYFANS
+                </h1>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
             
             {/* Profile Info */}
             <div className="p-4 lg:p-8">
               <div className="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
                 {/* Profile Image */}
-                <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#00AFF0]/20 -mt-16 border-4 border-black/40"></div>
+                <div className="relative w-24 h-24 lg:w-32 lg:h-32 -mt-16">
+                  <div className="absolute inset-0 rounded-full border-4 border-black/40 overflow-hidden">
+                    <Image
+                      src="/leaks/meliax leak (1).jpg"
+                      alt="MeliaX Profile"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
                 
                 <div className="flex-1 text-center lg:text-left">
                   <h1 className="text-xl lg:text-2xl font-bold mb-2">MeliaX Official</h1>
@@ -57,7 +74,7 @@ export default function OnlyFansPage() {
                   
                   {/* OnlyFans Button */}
                   <a 
-                    href="https://onlyfans.com/meliax" 
+                    href="https://onlyfans.com/meliax/c20" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#00AFF0] text-white rounded-full hover:bg-[#0095CC] transition-colors shadow-lg shadow-[#00AFF0]/20"
@@ -81,35 +98,46 @@ export default function OnlyFansPage() {
             ))}
           </div>
 
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-3 mb-8">
-            {[
-              { icon: <Instagram size={20} />, label: 'Instagram', href: '#' },
-              { icon: <Twitter size={20} />, label: 'Twitter', href: '#' },
-              { icon: <Facebook size={20} />, label: 'Facebook', href: '#' },
-              { icon: <Globe size={20} />, label: 'Website', href: '#' },
-            ].map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-sm rounded-full hover:bg-[#00AFF0]/20 text-sm border border-[#00AFF0]/20 transition-all duration-300"
-              >
-                {link.icon}
-                <span>{link.label}</span>
-              </a>
-            ))}
-          </div>
-
+         
           {/* Content Preview */}
           <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#00AFF0]/20">
             <h2 className="text-xl lg:text-2xl font-bold mb-6">Exclusive Content</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[...Array(8)].map((_, index) => (
-                <div key={index} className="aspect-square bg-[#00AFF0]/10 rounded-xl relative overflow-hidden border border-[#00AFF0]/20 group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Heart className="text-[#00AFF0]/40 w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-110 transition-transform" />
+              {[
+                'liaimg1 (1).jpg',
+                'liaimg1 (2).jpg',
+                'liaimg1 (3).jpg',
+                'liaimg1 (4).jpg',
+                'liaimg1 (5).jpg',
+                'liaimg1 (1).jpeg',
+                'liaimg1 (2).jpeg',
+                'liaimg1 (3).jpeg',
+                'liaimg1 (4).jpeg',
+                'liaimg1 (5).jpeg',
+                'liaimg1 (1).webp'
+              ].map((image, index) => (
+                <a
+                  key={index}
+                  href="https://onlyfans.com/meliax/c20"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-square rounded-xl relative overflow-hidden border border-[#00AFF0]/20 group"
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={`/meliaof/${image}`}
+                      alt={`MeliaX Content ${index + 1}`}
+                      fill
+                      className="object-cover blur-md group-hover:blur-lg transition-all duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                      <Lock className="text-white w-6 h-6 lg:w-8 lg:h-8 opacity-75 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300" />
+                      <span className="text-white text-sm lg:text-base font-medium opacity-75 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        Jetzt Entsperren
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>

@@ -38,13 +38,29 @@ export default function CamPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
-        <div className="mt-8 lg:mt-16">
+      <main className="w-full max-w-[2000px] mx-auto px-2 lg:px-8 pb-16">
+        <div className="mt-8 sm:mt-14 lg:mt-16">
           {/* Stream Window */}
           <div className="bg-gray-900/50 rounded-xl lg:rounded-2xl overflow-hidden backdrop-blur-sm border border-pink-500/10 mb-8">
             <div className="aspect-video bg-black/60 relative">
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="https://swgczdsrrcuvmckcfowd.supabase.co/storage/v1/object/public/videos/0219.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-pink-400 text-lg">Stream wird geladen...</p>
+                <div className="text-center z-10">
+                  <p className="text-pink-400 text-lg">Live Stream</p>
+                  <div className="flex items-center justify-center gap-2 mt-2">
+                    <span className="w-3 h-3 bg-pink-500 rounded-full animate-pulse"></span>
+                    <span className="text-white/90">Live</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -60,14 +76,24 @@ export default function CamPage() {
                 </div>
                 
                 <div className="flex gap-2">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
+                  <a 
+                    href="https://tinyurl.com/meliaxcamstripchat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300"
+                  >
                     <Heart size={20} />
-                    <span>Follow</span>
-                  </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 rounded-xl hover:bg-pink-500/10 border border-pink-500/10 transition-all duration-300">
+                    <span>Zum Stripchat</span>
+                  </a>
+                  <a 
+                    href="https://tinyurl.com/meliaxcamstripchat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 rounded-xl hover:bg-pink-500/10 border border-pink-500/10 transition-all duration-300"
+                  >
                     <MessageCircle size={20} />
                     <span>Chat</span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

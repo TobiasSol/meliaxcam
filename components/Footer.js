@@ -57,7 +57,7 @@ export default function Footer() {
               <h3 className="text-lg font-semibold text-white mb-4">Social Media</h3>
               <div className="flex gap-4">
                 <a 
-                  href="https://www.instagram.com/lia.the.real"
+                  href="https://www.instagram.com/meliax_sweet/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-pink-500 transition-colors"

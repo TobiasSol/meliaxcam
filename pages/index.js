@@ -19,7 +19,7 @@ export default function Home() {
       
       <main className="w-full max-w-[2000px] mx-auto px-4 lg:px-8 pb-16">
         {/* Live Cam Card */}
-        <div className="mt-8 lg:mt-16">
+        <div className="mt-8 sm:mt-14 lg:mt-16">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl lg:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
             <div className="relative bg-gray-900/50 rounded-xl lg:rounded-2xl border border-pink-500/10 backdrop-blur-sm overflow-hidden">
@@ -66,12 +66,17 @@ export default function Home() {
                   ))}
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-2.5 lg:py-3 rounded-xl hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 group">
+                <a 
+                  href="https://tinyurl.com/meliaxcamstripchat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-2.5 lg:py-3 rounded-xl hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 group inline-block"
+                >
                   <span className="relative z-10 flex items-center justify-center gap-2 uppercase text-sm lg:text-lg tracking-wider">
                     Zum Stream
                     <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
